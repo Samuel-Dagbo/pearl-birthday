@@ -11,18 +11,18 @@ export default function SectionDivider() {
         <path
           d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V120H0V40Z"
           fill="url(#divider-gradient)"
-          opacity="0.15"
+          opacity="0.12"
         />
         <path
           d="M0 60C240 20 480 80 720 60C960 40 1200 100 1440 60V120H0V60Z"
           fill="url(#divider-gradient)"
-          opacity="0.08"
+          opacity="0.06"
         />
         <defs>
           <linearGradient id="divider-gradient" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#ec4899" />
-            <stop offset="50%" stopColor="#a855f7" />
-            <stop offset="100%" stopColor="#6366f1" />
+            <stop offset="0%" stopColor="#3b82f6" />
+            <stop offset="50%" stopColor="#60a5fa" />
+            <stop offset="100%" stopColor="#93c5fd" />
           </linearGradient>
         </defs>
       </svg>

@@ -20,7 +20,7 @@ export default function FinalSection() {
             angle: 60,
             spread: 55,
             origin: { x: 0, y: 0.7 },
-            colors: ["#ec4899", "#a855f7", "#fbbf24", "#f472b6", "#6366f1"],
+            colors: ["#3b82f6", "#60a5fa", "#93c5fd", "#ffffff", "#bfdbfe"],
             ticks: 60,
           });
           confetti({
@@ -28,7 +28,7 @@ export default function FinalSection() {
             angle: 120,
             spread: 55,
             origin: { x: 1, y: 0.7 },
-            colors: ["#ec4899", "#a855f7", "#fbbf24", "#f472b6", "#6366f1"],
+            colors: ["#3b82f6", "#60a5fa", "#93c5fd", "#ffffff", "#bfdbfe"],
             ticks: 60,
           });
         };
@@ -58,7 +58,7 @@ export default function FinalSection() {
 
   return (
     <section id="final-section" className="relative py-24 sm:py-32 px-4">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-pink-950/15 to-pink-950/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#050d1a] via-blue-950/15 to-blue-950/30" />
 
       <div className="relative z-10 max-w-3xl mx-auto text-center">
         <motion.div
@@ -84,13 +84,13 @@ export default function FinalSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          <span className="bg-gradient-to-r from-amber-200 via-pink-300 to-purple-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-300 via-sky-300 to-white bg-clip-text text-transparent">
             Happy Birthday, Pearl
           </span>
         </motion.h2>
 
         <motion.p
-          className="text-base sm:text-lg md:text-xl text-pink-200/70 max-w-lg mx-auto leading-relaxed mb-8 sm:mb-10"
+          className="text-base sm:text-lg md:text-xl text-blue-200/70 max-w-lg mx-auto leading-relaxed mb-8 sm:mb-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -109,11 +109,11 @@ export default function FinalSection() {
           transition={{ delay: 0.7 }}
           whileHover={{ scale: 1.02 }}
         >
-          <span className="text-pink-400 animate-heart-beat text-lg">♥</span>
-          <span className="text-pink-300/70 text-xs sm:text-sm tracking-wide">
+          <span className="text-blue-400 animate-heart-beat text-lg">♥</span>
+          <span className="text-blue-300/70 text-xs sm:text-sm tracking-wide">
             Made with infinite love, just for you
           </span>
-          <span className="text-pink-400 animate-heart-beat text-lg">♥</span>
+          <span className="text-blue-400 animate-heart-beat text-lg">♥</span>
         </motion.div>
       </div>
     </section>

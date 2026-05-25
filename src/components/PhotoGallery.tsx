@@ -33,9 +33,7 @@ export default function PhotoGallery() {
     fetchPhotos();
   }, []);
 
-  const closeLightbox = useCallback(() => {
-    setSelectedPhoto(null);
-  }, []);
+  const closeLightbox = useCallback(() => setSelectedPhoto(null), []);
 
   const nextPhoto = useCallback(() => {
     if (!selectedPhoto || photos.length === 0) return;
@@ -65,12 +63,8 @@ export default function PhotoGallery() {
         <div className="max-w-6xl mx-auto">
           <div className="columns-2 sm:columns-3 md:columns-4 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
             {Array.from({ length: 8 }).map((_, i) => (
-              <div
-                key={i}
-                className="break-inside-avoid rounded-2xl bg-white/[0.03] overflow-hidden"
-                style={{ height: `${((i % 3) + 1) * 140}px` }}
-              >
-                <div className="w-full h-full animate-pulse bg-gradient-to-r from-white/[0.03] via-white/[0.06] to-white/[0.03] bg-[length:200%_100%] animate-shimmer" />
+              <div key={i} className="break-inside-avoid rounded-2xl bg-white/[0.02] overflow-hidden" style={{ height: `${((i % 3) + 1) * 140}px` }}>
+                <div className="w-full h-full animate-pulse bg-gradient-to-r from-white/[0.02] via-white/[0.05] to-white/[0.02] bg-[length:200%_100%]" />
               </div>
             ))}
           </div>
@@ -79,13 +73,11 @@ export default function PhotoGallery() {
     );
   }
 
-  if (error || photos.length === 0) {
-    return null;
-  }
+  if (error || photos.length === 0) return null;
 
   return (
     <section className="relative py-24 sm:py-32 px-4">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-950/5 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#050d1a] via-blue-950/5 to-[#050d1a]" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         <motion.div
@@ -99,11 +91,11 @@ export default function PhotoGallery() {
             className="text-3xl sm:text-4xl md:text-5xl mb-4"
             style={{ fontFamily: "var(--font-dancing), cursive" }}
           >
-            <span className="bg-gradient-to-r from-pink-400 via-rose-300 to-amber-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 via-sky-300 to-white bg-clip-text text-transparent">
               Beautiful Memories
             </span>
           </h2>
-          <p className="text-pink-200/50 text-sm sm:text-base">
+          <p className="text-blue-200/50 text-sm sm:text-base">
             Glimpses of the moments we&apos;ve shared
           </p>
         </motion.div>
@@ -127,12 +119,10 @@ export default function PhotoGallery() {
                 className="w-full h-auto transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
                 sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute inset-0 ring-1 ring-white/0 group-hover:ring-white/10 rounded-2xl transition-all duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050d1a]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 ring-1 ring-white/0 group-hover:ring-blue-400/20 rounded-2xl transition-all duration-300" />
               <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <span className="text-white/80 text-sm font-medium">
-                  ⊕ View
-                </span>
+                <span className="text-blue-200/80 text-sm font-medium">⊕ View</span>
               </div>
             </motion.div>
           ))}
@@ -142,14 +132,14 @@ export default function PhotoGallery() {
       <AnimatePresence>
         {selectedPhoto && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#050d1a]/95 backdrop-blur-md p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeLightbox}
           >
             <motion.button
-              className="absolute top-4 right-4 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-white/60 hover:text-white z-20"
+              className="absolute top-4 right-4 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-blue-300/60 hover:text-white z-20"
               onClick={closeLightbox}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -162,7 +152,7 @@ export default function PhotoGallery() {
             {photos.length > 1 && (
               <>
                 <motion.button
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-white/60 hover:text-white z-20"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-blue-300/60 hover:text-white z-20"
                   onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -172,7 +162,7 @@ export default function PhotoGallery() {
                   </svg>
                 </motion.button>
                 <motion.button
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-white/60 hover:text-white z-20"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-blue-300/60 hover:text-white z-20"
                   onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -197,7 +187,7 @@ export default function PhotoGallery() {
                 alt="Enlarged memory"
                 width={selectedPhoto.width}
                 height={selectedPhoto.height}
-                className="max-w-full max-h-[85vh] w-auto h-auto rounded-2xl shadow-2xl shadow-pink-500/10"
+                className="max-w-full max-h-[85vh] w-auto h-auto rounded-2xl shadow-2xl shadow-blue-500/10"
                 sizes="90vw"
                 priority
               />
