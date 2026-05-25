@@ -37,14 +37,14 @@ function FlipUnit({ value, label }: { value: number; label: string }) {
           style={{ perspective: 300 }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-white/[0.04] to-transparent" />
-          <div className="absolute inset-0 rounded-xl sm:rounded-2xl ring-1 ring-white/[0.03] group-hover:ring-blue-400/20 transition-all duration-500" />
-          <span className="relative text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-b from-blue-200 via-sky-300 to-blue-400 bg-clip-text text-transparent tabular-nums drop-shadow-[0_0_12px_rgba(96,165,250,0.15)]">
+          <div className="absolute inset-0 rounded-xl sm:rounded-2xl ring-1 ring-white/[0.03] group-hover:ring-cyan-400/20 transition-all duration-500" />
+          <span className="relative text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-b from-cyan-200 via-teal-300 to-cyan-400 bg-clip-text text-transparent tabular-nums drop-shadow-[0_0_12px_rgba(34,211,238,0.15)]">
             {String(value).padStart(2, "0")}
           </span>
         </motion.div>
-        <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+        <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
       </div>
-      <span className="mt-2.5 text-[10px] sm:text-xs text-blue-300/35 uppercase tracking-[0.25em] font-medium">
+      <span className="mt-2.5 text-[10px] sm:text-xs text-cyan-300/35 uppercase tracking-[0.25em] font-medium">
         {label}
       </span>
     </div>
@@ -75,7 +75,7 @@ export default function CountdownTimer() {
   if (isBirthday) {
     return (
       <section className="relative py-24 sm:py-32 px-4">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050d1a] via-blue-950/15 to-[#050d1a]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#021a24] via-cyan-950/15 to-[#021a24]" />
         <div className="relative z-10 max-w-3xl mx-auto text-center">
           <motion.div
             initial={{ scale: 0 }}
@@ -91,12 +91,12 @@ export default function CountdownTimer() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <span className="bg-gradient-to-r from-blue-300 via-sky-300 to-white bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-300 via-teal-300 to-white bg-clip-text text-transparent">
               It&apos;s Your Day!
             </span>
           </motion.h2>
           <motion.p
-            className="text-lg sm:text-xl text-blue-200/70"
+            className="text-lg sm:text-xl text-cyan-200/70"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
@@ -116,9 +116,9 @@ export default function CountdownTimer() {
             {["Days", "Hours", "Minutes", "Seconds"].map((label) => (
               <div key={label} className="flex flex-col items-center">
                 <div className="glass-card-strong rounded-xl sm:rounded-2xl w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 flex items-center justify-center">
-                  <div className="w-5 h-5 rounded-full border-2 border-blue-500/20 border-t-blue-400 animate-spin" />
+                  <div className="w-5 h-5 rounded-full border-2 border-cyan-500/20 border-t-cyan-400 animate-spin" />
                 </div>
-                <span className="mt-2.5 text-[10px] sm:text-xs text-blue-300/35 uppercase tracking-[0.25em] font-medium">
+                <span className="mt-2.5 text-[10px] sm:text-xs text-cyan-300/35 uppercase tracking-[0.25em] font-medium">
                   {label}
                 </span>
               </div>
@@ -131,7 +131,7 @@ export default function CountdownTimer() {
 
   return (
     <section className="relative py-24 sm:py-32 px-4">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050d1a] via-blue-950/8 to-[#050d1a]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#021a24] via-cyan-950/8 to-[#021a24]" />
       <div className="relative z-10 max-w-3xl mx-auto text-center">
         <motion.h2
           className="text-2xl sm:text-3xl md:text-4xl mb-3"
@@ -140,12 +140,12 @@ export default function CountdownTimer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="bg-gradient-to-r from-blue-400 via-sky-300 to-blue-300 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-cyan-300 bg-clip-text text-transparent">
             Counting Down to Your Special Day
           </span>
         </motion.h2>
         <motion.p
-          className="text-blue-200/35 text-sm sm:text-base mb-10 sm:mb-12"
+          className="text-cyan-200/35 text-sm sm:text-base mb-10 sm:mb-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

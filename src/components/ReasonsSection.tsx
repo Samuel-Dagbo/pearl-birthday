@@ -7,36 +7,36 @@ const reasons = [
     emoji: "😊",
     title: "Your Smile",
     description: "It lights up every room and melts my heart every single time.",
-    gradient: "from-blue-500/15 to-transparent",
-    border: "hover:border-blue-500/30",
+    gradient: "from-cyan-500/15 to-transparent",
+    border: "hover:border-cyan-500/30",
   },
   {
     emoji: "💪",
     title: "Your Strength",
     description: "You face everything with grace and courage. You inspire me daily.",
-    gradient: "from-sky-500/15 to-transparent",
-    border: "hover:border-sky-500/30",
+    gradient: "from-teal-500/15 to-transparent",
+    border: "hover:border-teal-500/30",
   },
   {
     emoji: "❤️",
     title: "Your Kindness",
     description: "The way you care for others is one of the most beautiful things about you.",
-    gradient: "from-blue-400/15 to-transparent",
-    border: "hover:border-blue-400/30",
+    gradient: "from-cyan-400/15 to-transparent",
+    border: "hover:border-cyan-400/30",
   },
   {
     emoji: "😂",
     title: "Your Laugh",
     description: "My absolute favorite sound in the whole world.",
-    gradient: "from-cyan-500/15 to-transparent",
-    border: "hover:border-cyan-500/30",
+    gradient: "from-sky-500/15 to-transparent",
+    border: "hover:border-sky-500/30",
   },
   {
     emoji: "✨",
     title: "Your Heart",
     description: "You have the purest, most loving heart I have ever known.",
-    gradient: "from-indigo-500/15 to-transparent",
-    border: "hover:border-indigo-500/30",
+    gradient: "from-teal-400/15 to-transparent",
+    border: "hover:border-teal-400/30",
   },
   {
     emoji: "🌟",
@@ -68,7 +68,7 @@ const cardVariants = {
 export default function ReasonsSection() {
   return (
     <section className="relative py-24 sm:py-32 px-4">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050d1a] via-blue-950/5 to-[#050d1a]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#021a24] via-cyan-950/5 to-[#021a24]" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
         <motion.div
@@ -82,11 +82,11 @@ export default function ReasonsSection() {
             className="text-3xl sm:text-4xl md:text-5xl mb-4"
             style={{ fontFamily: "var(--font-dancing), cursive" }}
           >
-            <span className="bg-gradient-to-r from-blue-400 via-sky-300 to-white bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-white bg-clip-text text-transparent">
               Reasons I Love You
             </span>
           </h2>
-          <p className="text-blue-200/50 text-sm sm:text-base">
+          <p className="text-cyan-200/50 text-sm sm:text-base">
             And this is just the beginning...
           </p>
         </motion.div>
@@ -116,16 +116,16 @@ export default function ReasonsSection() {
                 >
                   {reason.emoji}
                 </motion.span>
-                <h3 className="text-lg sm:text-xl font-semibold text-blue-200 mb-2 group-hover:text-blue-100 transition-colors duration-300">
+                <h3 className="text-lg sm:text-xl font-semibold text-cyan-200 mb-2 group-hover:text-cyan-100 transition-colors duration-300">
                   {reason.title}
                 </h3>
-                <p className="text-blue-200/50 text-sm sm:text-base leading-relaxed group-hover:text-blue-200/60 transition-colors duration-300">
+                <p className="text-cyan-200/50 text-sm sm:text-base leading-relaxed group-hover:text-cyan-200/60 transition-colors duration-300">
                   {reason.description}
                 </p>
               </div>
 
               <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/[0.02] to-transparent rounded-bl-full" />
-              <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-blue-500/[0.02] to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-cyan-500/[0.02] to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.div>
           ))}
         </motion.div>

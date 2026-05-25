@@ -87,7 +87,7 @@ export default function ParticleBackground() {
 
         ctx!.beginPath();
         ctx!.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx!.fillStyle = `rgba(147, 197, 253, ${p.opacity})`;
+        ctx!.fillStyle = `rgba(103, 232, 249, ${p.opacity})`;
         ctx!.fill();
       });
 

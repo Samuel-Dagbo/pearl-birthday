@@ -25,7 +25,7 @@ export default function LoveLetter() {
 
   return (
     <section className="relative py-24 sm:py-32 px-4" ref={ref}>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050d1a] via-blue-950/8 to-[#050d1a]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#021a24] via-cyan-950/8 to-[#021a24]" />
 
       <motion.div
         className="relative z-10 max-w-2xl mx-auto"
@@ -43,24 +43,24 @@ export default function LoveLetter() {
             className="text-3xl sm:text-4xl md:text-5xl"
             style={{ fontFamily: "var(--font-dancing), cursive" }}
           >
-            <span className="bg-gradient-to-r from-blue-400 via-sky-300 to-white bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-white bg-clip-text text-transparent">
               A Letter From My Heart
             </span>
           </h2>
         </motion.div>
 
         <motion.div
-          className="glass-card-strong rounded-3xl p-8 sm:p-10 md:p-14 glow-blue relative overflow-hidden"
+          className="glass-card-strong rounded-3xl p-8 sm:p-10 md:p-14 glow-cyan relative overflow-hidden"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-500 via-sky-400 to-blue-300" />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-cyan-500 via-teal-400 to-cyan-300" />
 
-          <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-blue-500/20 rounded-tl-xl" />
-          <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-blue-500/20 rounded-tr-xl" />
-          <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-blue-500/20 rounded-bl-xl" />
-          <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-blue-500/20 rounded-br-xl" />
+          <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-cyan-500/20 rounded-tl-xl" />
+          <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-cyan-500/20 rounded-tr-xl" />
+          <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-cyan-500/20 rounded-bl-xl" />
+          <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-cyan-500/20 rounded-br-xl" />
 
           <motion.div
             className="flex justify-center mb-8"
@@ -78,7 +78,7 @@ export default function LoveLetter() {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <span className="bg-gradient-to-r from-blue-400 to-sky-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 to-teal-300 bg-clip-text text-transparent">
               My Dearest Pearl,
             </span>
           </motion.h3>
@@ -87,7 +87,7 @@ export default function LoveLetter() {
             {paragraphs.map((text, i) => (
               <motion.p
                 key={i}
-                className="text-base sm:text-lg leading-relaxed text-blue-100/75"
+                className="text-base sm:text-lg leading-relaxed text-cyan-100/75"
                 style={{ fontFamily: "var(--font-caveat), cursive", fontSize: "1.15em" }}
                 custom={i}
                 variants={paragraphVariants}
@@ -100,18 +100,18 @@ export default function LoveLetter() {
           </div>
 
           <motion.div
-            className="mt-10 pt-8 border-t border-blue-500/15 text-center"
+            className="mt-10 pt-8 border-t border-cyan-500/15 text-center"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 1.6, duration: 0.6 }}
           >
             <p
-              className="text-xl sm:text-2xl text-blue-300"
+              className="text-xl sm:text-2xl text-cyan-300"
               style={{ fontFamily: "var(--font-dancing), cursive" }}
             >
               Happy Birthday, my love
             </p>
-            <p className="mt-2 text-blue-400/35 text-xs sm:text-sm">
+            <p className="mt-2 text-cyan-400/35 text-xs sm:text-sm">
               With all my heart, forever and always
             </p>
           </motion.div>

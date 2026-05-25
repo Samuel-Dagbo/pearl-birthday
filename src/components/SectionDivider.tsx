@@ -20,9 +20,9 @@ export default function SectionDivider() {
         />
         <defs>
           <linearGradient id="divider-gradient" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="50%" stopColor="#60a5fa" />
-            <stop offset="100%" stopColor="#93c5fd" />
+            <stop offset="0%" stopColor="#06b6d4" />
+            <stop offset="50%" stopColor="#22d3ee" />
+            <stop offset="100%" stopColor="#67e8f9" />
           </linearGradient>
         </defs>
       </svg>

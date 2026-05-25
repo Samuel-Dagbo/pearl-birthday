@@ -55,7 +55,7 @@ function Sparkle({ left, top, size, delay, duration }: {
       animate={{ opacity: [0, 1, 0], scale: [0, 1.2, 0] }}
       transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
     >
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="#93c5fd">
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="#67e8f9">
         <path d="M12 0l2.5 7.5L22 9l-6 5.5L17.5 22 12 17.5 6.5 22 8 14.5 2 9l7.5-1.5z" />
       </svg>
     </motion.div>
@@ -85,13 +85,13 @@ export default function HeroSection() {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden px-4"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-950 via-indigo-950 to-[#050d1a]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-sky-500/5 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-cyan-950 via-teal-950 to-[#021a24]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-500/10 via-teal-500/5 to-transparent" />
 
       <div
-        className="absolute inset-0 opacity-[0.15] transition-all duration-700"
+        className="absolute inset-0 opacity-[0.12] transition-all duration-700"
         style={{
-          background: `radial-gradient(600px circle at ${mousePos.x}% ${mousePos.y}%, rgba(96,165,250,0.3), transparent 60%)`,
+          background: `radial-gradient(600px circle at ${mousePos.x}% ${mousePos.y}%, rgba(34,211,238,0.3), transparent 60%)`,
         }}
       />
 
@@ -99,22 +99,22 @@ export default function HeroSection() {
         <div
           className="w-full h-full animate-gradient-shift"
           style={{
-            background: "linear-gradient(135deg, transparent 0%, rgba(59,130,246,0.08) 25%, transparent 50%, rgba(147,197,253,0.08) 75%, transparent 100%)",
+            background: "linear-gradient(135deg, transparent 0%, rgba(6,182,212,0.08) 25%, transparent 50%, rgba(103,232,249,0.08) 75%, transparent 100%)",
             backgroundSize: "400% 400%",
           }}
         />
       </div>
 
       <div
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-aurora"
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-aurora"
         style={{ transform: "translate(-50%, -50%)" }}
       />
       <div
-        className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-sky-500/5 rounded-full blur-3xl animate-aurora"
+        className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-teal-500/5 rounded-full blur-3xl animate-aurora"
         style={{ animationDelay: "-4s", transform: "translate(50%, 50%)" }}
       />
       <div
-        className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-blue-400/3 rounded-full blur-3xl animate-soft-float"
+        className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-cyan-400/3 rounded-full blur-3xl animate-soft-float"
         style={{ transform: "translate(-50%, -50%)" }}
       />
 
@@ -134,10 +134,10 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <span className="px-5 py-2.5 rounded-full glass-strong text-blue-300 text-xs sm:text-sm tracking-[0.2em] uppercase inline-flex items-center gap-2 border-blue-500/20 shadow-lg shadow-blue-500/5">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-heart-beat" />
+          <span className="px-5 py-2.5 rounded-full glass-strong text-cyan-300 text-xs sm:text-sm tracking-[0.2em] uppercase inline-flex items-center gap-2 border-cyan-500/20 shadow-lg shadow-cyan-500/5">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-heart-beat" />
             June 8th
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-heart-beat" />
+            <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-heart-beat" />
           </span>
         </motion.div>
 
@@ -154,7 +154,7 @@ export default function HeroSection() {
               transition: "transform 0.3s ease-out",
             }}
           >
-            <div className="w-72 h-72 sm:w-96 sm:h-96 md:w-[450px] md:h-[450px] rounded-full bg-gradient-to-br from-blue-500/8 via-sky-500/5 to-blue-300/5 blur-3xl animate-soft-float" />
+            <div className="w-72 h-72 sm:w-96 sm:h-96 md:w-[450px] md:h-[450px] rounded-full bg-gradient-to-br from-cyan-500/8 via-teal-500/5 to-cyan-300/5 blur-3xl animate-soft-float" />
           </div>
 
           <h1 className="relative text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
@@ -176,7 +176,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.7, type: "spring", stiffness: 100 }}
             >
-              <span className="text-gradient-name drop-shadow-[0_0_40px_rgba(96,165,250,0.3)]">
+              <span className="text-gradient-name drop-shadow-[0_0_40px_rgba(34,211,238,0.3)]">
                 Pearl
               </span>
             </motion.span>
@@ -184,7 +184,7 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.p
-          className="text-base sm:text-lg md:text-xl text-blue-200/60 max-w-xl mx-auto leading-relaxed px-4 mb-10 sm:mb-12"
+          className="text-base sm:text-lg md:text-xl text-cyan-200/60 max-w-xl mx-auto leading-relaxed px-4 mb-10 sm:mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1 }}
@@ -200,7 +200,7 @@ export default function HeroSection() {
           transition={{ delay: 1.4, duration: 0.6 }}
         >
           <motion.div
-            className="flex items-center gap-3 text-blue-300/30 text-xs sm:text-sm"
+            className="flex items-center gap-3 text-cyan-300/30 text-xs sm:text-sm"
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >

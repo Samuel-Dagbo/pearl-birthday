@@ -77,7 +77,7 @@ export default function PhotoGallery() {
 
   return (
     <section className="relative py-24 sm:py-32 px-4">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050d1a] via-blue-950/5 to-[#050d1a]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#021a24] via-cyan-950/5 to-[#021a24]" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         <motion.div
@@ -91,11 +91,11 @@ export default function PhotoGallery() {
             className="text-3xl sm:text-4xl md:text-5xl mb-4"
             style={{ fontFamily: "var(--font-dancing), cursive" }}
           >
-            <span className="bg-gradient-to-r from-blue-400 via-sky-300 to-white bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-white bg-clip-text text-transparent">
               Beautiful Memories
             </span>
           </h2>
-          <p className="text-blue-200/50 text-sm sm:text-base">
+          <p className="text-cyan-200/50 text-sm sm:text-base">
             Glimpses of the moments we&apos;ve shared
           </p>
         </motion.div>
@@ -111,7 +111,7 @@ export default function PhotoGallery() {
               transition={{ delay: index * 0.04, duration: 0.5 }}
               onClick={() => setSelectedPhoto(photo)}
             >
-              <div className="relative overflow-hidden rounded-2xl ring-1 ring-white/[0.04] group-hover:ring-blue-400/25 transition-all duration-500 shadow-lg shadow-black/30 group-hover:shadow-blue-500/10 group-hover:shadow-xl">
+              <div className="relative overflow-hidden rounded-2xl ring-1 ring-white/[0.04] group-hover:ring-cyan-400/25 transition-all duration-500 shadow-lg shadow-black/30 group-hover:shadow-cyan-500/10 group-hover:shadow-xl">
                 <Image
                   src={photo.secure_url}
                   alt={`Memory ${index + 1}`}
@@ -120,9 +120,9 @@ export default function PhotoGallery() {
                   className="w-full h-auto transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050d1a]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#021a24]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-400">
-                  <span className="text-blue-200/80 text-sm font-medium inline-flex items-center gap-1.5">
+                  <span className="text-cyan-200/80 text-sm font-medium inline-flex items-center gap-1.5">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
@@ -138,14 +138,14 @@ export default function PhotoGallery() {
       <AnimatePresence>
         {selectedPhoto && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-[#050d1a]/95 backdrop-blur-md p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#021a24]/95 backdrop-blur-md p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeLightbox}
           >
             <motion.button
-              className="absolute top-4 right-4 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-blue-300/60 hover:text-white z-20 shadow-lg"
+              className="absolute top-4 right-4 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-cyan-300/60 hover:text-white z-20 shadow-lg"
               onClick={closeLightbox}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -158,7 +158,7 @@ export default function PhotoGallery() {
             {photos.length > 1 && (
               <>
                 <motion.button
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-blue-300/60 hover:text-white z-20 shadow-lg"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-cyan-300/60 hover:text-white z-20 shadow-lg"
                   onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -168,7 +168,7 @@ export default function PhotoGallery() {
                   </svg>
                 </motion.button>
                 <motion.button
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-blue-300/60 hover:text-white z-20 shadow-lg"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-cyan-300/60 hover:text-white z-20 shadow-lg"
                   onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -188,7 +188,7 @@ export default function PhotoGallery() {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative rounded-2xl overflow-hidden ring-1 ring-white/[0.06] shadow-2xl shadow-blue-500/10">
+              <div className="relative rounded-2xl overflow-hidden ring-1 ring-white/[0.06] shadow-2xl shadow-cyan-500/10">
                 <Image
                   src={selectedPhoto.secure_url}
                   alt="Enlarged memory"

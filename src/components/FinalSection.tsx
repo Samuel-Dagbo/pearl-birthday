@@ -19,7 +19,7 @@ export default function FinalSection() {
             particleCount: 50,
             spread: 100,
             origin: { x: 0.5, y: 0.4 },
-            colors: ["#3b82f6", "#60a5fa", "#93c5fd", "#ffffff", "#bfdbfe"],
+            colors: ["#06b6d4", "#22d3ee", "#67e8f9", "#ffffff", "#a5f3fc"],
             ticks: 100,
           });
 
@@ -29,7 +29,7 @@ export default function FinalSection() {
               angle: 60,
               spread: 70,
               origin: { x: 0, y: 0.6 },
-              colors: ["#3b82f6", "#60a5fa", "#93c5fd", "#ffffff"],
+              colors: ["#06b6d4", "#22d3ee", "#67e8f9", "#ffffff"],
               ticks: 80,
             });
             confetti({
@@ -37,7 +37,7 @@ export default function FinalSection() {
               angle: 120,
               spread: 70,
               origin: { x: 1, y: 0.6 },
-              colors: ["#3b82f6", "#60a5fa", "#93c5fd", "#ffffff"],
+              colors: ["#06b6d4", "#22d3ee", "#67e8f9", "#ffffff"],
               ticks: 80,
             });
           }, 200);
@@ -47,7 +47,7 @@ export default function FinalSection() {
               particleCount: 80,
               spread: 120,
               origin: { x: 0.5, y: 0.3 },
-              colors: ["#3b82f6", "#60a5fa", "#93c5fd", "#ffffff", "#bfdbfe"],
+              colors: ["#06b6d4", "#22d3ee", "#67e8f9", "#ffffff", "#a5f3fc"],
               ticks: 120,
             });
           }, 500);
@@ -77,8 +77,8 @@ export default function FinalSection() {
 
   return (
     <section id="final-section" className="relative py-24 sm:py-32 px-4">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050d1a] via-blue-950/15 to-blue-950/30" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#021a24] via-cyan-950/15 to-cyan-950/30" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-500/5 via-transparent to-transparent" />
 
       <div className="relative z-10 max-w-3xl mx-auto text-center">
         <motion.div
@@ -104,13 +104,13 @@ export default function FinalSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          <span className="text-gradient-warm drop-shadow-[0_0_20px_rgba(96,165,250,0.2)]">
+          <span className="text-gradient-warm drop-shadow-[0_0_20px_rgba(34,211,238,0.2)]">
             Happy Birthday, Pearl
           </span>
         </motion.h2>
 
         <motion.p
-          className="text-base sm:text-lg md:text-xl text-blue-200/70 max-w-lg mx-auto leading-relaxed mb-8 sm:mb-10"
+          className="text-base sm:text-lg md:text-xl text-cyan-200/70 max-w-lg mx-auto leading-relaxed mb-8 sm:mb-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -122,18 +122,18 @@ export default function FinalSection() {
         </motion.p>
 
         <motion.div
-          className="inline-flex items-center gap-3 glass-card-strong rounded-full px-6 py-3 sm:px-8 sm:py-4 shadow-lg shadow-blue-500/5"
+          className="inline-flex items-center gap-3 glass-card-strong rounded-full px-6 py-3 sm:px-8 sm:py-4 shadow-lg shadow-cyan-500/5"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.7 }}
           whileHover={{ scale: 1.03 }}
         >
-          <span className="text-blue-400 animate-heart-beat text-lg">♥</span>
-          <span className="text-blue-300/70 text-xs sm:text-sm tracking-wide">
+          <span className="text-cyan-400 animate-heart-beat text-lg">♥</span>
+          <span className="text-cyan-300/70 text-xs sm:text-sm tracking-wide">
             Made with infinite love, just for you
           </span>
-          <span className="text-blue-400 animate-heart-beat text-lg">♥</span>
+          <span className="text-cyan-400 animate-heart-beat text-lg">♥</span>
         </motion.div>
 
         <motion.div
@@ -146,7 +146,7 @@ export default function FinalSection() {
           {Array.from({ length: 5 }).map((_, i) => (
             <motion.span
               key={i}
-              className="text-blue-300/20 text-lg"
+              className="text-cyan-300/20 text-lg"
               animate={{ y: [0, -6, 0], opacity: [0.2, 0.6, 0.2] }}
               transition={{ duration: 1.5, delay: i * 0.2, repeat: Infinity }}
             >
