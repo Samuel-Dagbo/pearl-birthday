@@ -4,37 +4,56 @@ import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 export default function FinalSection() {
-  const confettiRef = useRef<boolean>(false);
+  const confettiFired = useRef(false);
 
   useEffect(() => {
-    async function loadConfetti() {
-      if (confettiRef.current) return;
-      confettiRef.current = true;
+    async function fireConfetti() {
+      if (confettiFired.current) return;
+      confettiFired.current = true;
 
       try {
         const confetti = (await import("canvas-confetti")).default;
 
-        const fire = () => {
+        const burst = () => {
           confetti({
-            particleCount: 3,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0, y: 0.7 },
+            particleCount: 50,
+            spread: 100,
+            origin: { x: 0.5, y: 0.4 },
             colors: ["#3b82f6", "#60a5fa", "#93c5fd", "#ffffff", "#bfdbfe"],
-            ticks: 60,
+            ticks: 100,
           });
-          confetti({
-            particleCount: 3,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1, y: 0.7 },
-            colors: ["#3b82f6", "#60a5fa", "#93c5fd", "#ffffff", "#bfdbfe"],
-            ticks: 60,
-          });
+
+          setTimeout(() => {
+            confetti({
+              particleCount: 30,
+              angle: 60,
+              spread: 70,
+              origin: { x: 0, y: 0.6 },
+              colors: ["#3b82f6", "#60a5fa", "#93c5fd", "#ffffff"],
+              ticks: 80,
+            });
+            confetti({
+              particleCount: 30,
+              angle: 120,
+              spread: 70,
+              origin: { x: 1, y: 0.6 },
+              colors: ["#3b82f6", "#60a5fa", "#93c5fd", "#ffffff"],
+              ticks: 80,
+            });
+          }, 200);
+
+          setTimeout(() => {
+            confetti({
+              particleCount: 80,
+              spread: 120,
+              origin: { x: 0.5, y: 0.3 },
+              colors: ["#3b82f6", "#60a5fa", "#93c5fd", "#ffffff", "#bfdbfe"],
+              ticks: 120,
+            });
+          }, 500);
         };
 
-        const interval = setInterval(fire, 300);
-        setTimeout(() => clearInterval(interval), 4000);
+        burst();
       } catch {}
     }
 
@@ -42,12 +61,12 @@ export default function FinalSection() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            loadConfetti();
+            fireConfetti();
             observer.disconnect();
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     const el = document.getElementById("final-section");
@@ -59,18 +78,19 @@ export default function FinalSection() {
   return (
     <section id="final-section" className="relative py-24 sm:py-32 px-4">
       <div className="absolute inset-0 bg-gradient-to-b from-[#050d1a] via-blue-950/15 to-blue-950/30" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent" />
 
       <div className="relative z-10 max-w-3xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
+          initial={{ opacity: 0, scale: 0.3 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ type: "spring", stiffness: 150, damping: 15 }}
+          transition={{ type: "spring", stiffness: 120, damping: 12 }}
         >
           <motion.div
             className="text-6xl sm:text-8xl block mb-8"
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ scale: [1, 1.15, 1], rotate: [0, -5, 5, 0] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           >
             🎂
           </motion.div>
@@ -84,7 +104,7 @@ export default function FinalSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          <span className="bg-gradient-to-r from-blue-300 via-sky-300 to-white bg-clip-text text-transparent">
+          <span className="text-gradient-warm drop-shadow-[0_0_20px_rgba(96,165,250,0.2)]">
             Happy Birthday, Pearl
           </span>
         </motion.h2>
@@ -102,18 +122,37 @@ export default function FinalSection() {
         </motion.p>
 
         <motion.div
-          className="inline-flex items-center gap-3 glass-card rounded-full px-6 py-3 sm:px-8 sm:py-4"
+          className="inline-flex items-center gap-3 glass-card-strong rounded-full px-6 py-3 sm:px-8 sm:py-4 shadow-lg shadow-blue-500/5"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.7 }}
-          whileHover={{ scale: 1.02 }}
+          whileHover={{ scale: 1.03 }}
         >
           <span className="text-blue-400 animate-heart-beat text-lg">♥</span>
           <span className="text-blue-300/70 text-xs sm:text-sm tracking-wide">
             Made with infinite love, just for you
           </span>
           <span className="text-blue-400 animate-heart-beat text-lg">♥</span>
+        </motion.div>
+
+        <motion.div
+          className="mt-12 flex justify-center gap-3"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 1 }}
+        >
+          {Array.from({ length: 5 }).map((_, i) => (
+            <motion.span
+              key={i}
+              className="text-blue-300/20 text-lg"
+              animate={{ y: [0, -6, 0], opacity: [0.2, 0.6, 0.2] }}
+              transition={{ duration: 1.5, delay: i * 0.2, repeat: Infinity }}
+            >
+              ✦
+            </motion.span>
+          ))}
         </motion.div>
       </div>
     </section>

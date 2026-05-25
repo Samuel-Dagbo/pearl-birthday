@@ -1,31 +1,33 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const stars = Array.from({ length: 60 }, (_, i) => ({
-  id: i,
+const starsLayer1 = Array.from({ length: 50 }, (_, i) => ({
+  id: `s1-${i}`,
   left: Math.random() * 100,
   top: Math.random() * 100,
-  size: Math.random() * 2.5 + 1,
-  delay: Math.random() * 4,
+  size: Math.random() * 2 + 0.5,
+  delay: Math.random() * 5,
   duration: Math.random() * 3 + 2,
 }));
 
-const sparkles = Array.from({ length: 20 }, (_, i) => ({
-  id: i,
+const starsLayer2 = Array.from({ length: 30 }, (_, i) => ({
+  id: `s2-${i}`,
   left: Math.random() * 100,
   top: Math.random() * 100,
-  size: Math.random() * 3 + 2,
-  delay: Math.random() * 5,
-  duration: Math.random() * 2 + 2,
+  size: Math.random() * 1.5 + 0.3,
+  delay: Math.random() * 4,
+  duration: Math.random() * 4 + 3,
 }));
 
-const floatingElements = Array.from({ length: 10 }, (_, i) => ({
-  id: i,
+const sparkles = Array.from({ length: 15 }, (_, i) => ({
+  id: `sp-${i}`,
   left: Math.random() * 100,
-  size: Math.random() * 12 + 6,
-  duration: Math.random() * 12 + 12,
-  delay: Math.random() * 10,
+  top: Math.random() * 100,
+  size: Math.random() * 4 + 3,
+  delay: Math.random() * 6,
+  duration: Math.random() * 2.5 + 2,
 }));
 
 function Star({ left, top, size, delay, duration }: {
@@ -36,7 +38,7 @@ function Star({ left, top, size, delay, duration }: {
       className="absolute pointer-events-none rounded-full bg-white"
       style={{ left: `${left}%`, top: `${top}%`, width: size, height: size }}
       initial={{ opacity: 0 }}
-      animate={{ opacity: [0, 0.8, 0] }}
+      animate={{ opacity: [0, 0.7, 0] }}
       transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
     />
   );
@@ -50,7 +52,7 @@ function Sparkle({ left, top, size, delay, duration }: {
       className="absolute pointer-events-none"
       style={{ left: `${left}%`, top: `${top}%` }}
       initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: [0, 0.9, 0], scale: [0, 1, 0] }}
+      animate={{ opacity: [0, 1, 0], scale: [0, 1.2, 0] }}
       transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
     >
       <svg width={size} height={size} viewBox="0 0 24 24" fill="#93c5fd">
@@ -60,30 +62,42 @@ function Sparkle({ left, top, size, delay, duration }: {
   );
 }
 
-function FloatingElement({ left, size, duration, delay }: {
-  left: number; size: number; duration: number; delay: number;
-}) {
-  return (
-    <motion.div
-      className="absolute pointer-events-none select-none"
-      style={{ left: `${left}%`, fontSize: size }}
-      initial={{ y: "110vh", opacity: 0, rotate: 0 }}
-      animate={{ y: "-10vh", opacity: [0, 0.4, 0.4, 0], rotate: [0, 180, 360] }}
-      transition={{ duration, delay, repeat: Infinity, ease: "linear" }}
-    >
-      <span className="text-blue-400/15">✦</span>
-    </motion.div>
-  );
-}
-
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
+
+  useEffect(() => {
+    function handleMouse(e: MouseEvent) {
+      const el = sectionRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      setMousePos({
+        x: ((e.clientX - rect.left) / rect.width) * 100,
+        y: ((e.clientY - rect.top) / rect.height) * 100,
+      });
+    }
+    window.addEventListener("mousemove", handleMouse);
+    return () => window.removeEventListener("mousemove", handleMouse);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-blue-950 via-indigo-950 to-[#050d1a]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-sky-500/5 to-transparent" />
 
-      <div className="absolute inset-0 opacity-20">
-        <div className="w-full h-full animate-gradient-shift"
+      <div
+        className="absolute inset-0 opacity-[0.15] transition-all duration-700"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePos.x}% ${mousePos.y}%, rgba(96,165,250,0.3), transparent 60%)`,
+        }}
+      />
+
+      <div className="absolute inset-0 opacity-15">
+        <div
+          className="w-full h-full animate-gradient-shift"
           style={{
             background: "linear-gradient(135deg, transparent 0%, rgba(59,130,246,0.08) 25%, transparent 50%, rgba(147,197,253,0.08) 75%, transparent 100%)",
             backgroundSize: "400% 400%",
@@ -91,12 +105,22 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-aurora" />
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-sky-500/5 rounded-full blur-3xl animate-aurora" style={{ animationDelay: "-3s" }} />
+      <div
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-aurora"
+        style={{ transform: "translate(-50%, -50%)" }}
+      />
+      <div
+        className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-sky-500/5 rounded-full blur-3xl animate-aurora"
+        style={{ animationDelay: "-4s", transform: "translate(50%, 50%)" }}
+      />
+      <div
+        className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-blue-400/3 rounded-full blur-3xl animate-soft-float"
+        style={{ transform: "translate(-50%, -50%)" }}
+      />
 
-      {stars.map((s) => <Star key={s.id} {...s} />)}
+      {starsLayer1.map((s) => <Star key={s.id} {...s} />)}
+      {starsLayer2.map((s) => <Star key={s.id} {...s} />)}
       {sparkles.map((s) => <Sparkle key={s.id} {...s} />)}
-      {floatingElements.map((e) => <FloatingElement key={e.id} {...e} />)}
 
       <motion.div
         className="relative z-10 text-center max-w-4xl mx-auto"
@@ -110,7 +134,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <span className="px-5 py-2.5 rounded-full glass-strong text-blue-300 text-xs sm:text-sm tracking-[0.2em] uppercase inline-flex items-center gap-2 border-blue-500/20">
+          <span className="px-5 py-2.5 rounded-full glass-strong text-blue-300 text-xs sm:text-sm tracking-[0.2em] uppercase inline-flex items-center gap-2 border-blue-500/20 shadow-lg shadow-blue-500/5">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-heart-beat" />
             June 8th
             <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-heart-beat" />
@@ -123,23 +147,39 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-blue-500/8 blur-3xl" />
+          <div
+            className="absolute inset-0 flex items-center justify-center"
+            style={{
+              transform: `translate(${(mousePos.x - 50) * 0.02}px, ${(mousePos.y - 50) * 0.02}px)`,
+              transition: "transform 0.3s ease-out",
+            }}
+          >
+            <div className="w-72 h-72 sm:w-96 sm:h-96 md:w-[450px] md:h-[450px] rounded-full bg-gradient-to-br from-blue-500/8 via-sky-500/5 to-blue-300/5 blur-3xl animate-soft-float" />
           </div>
 
           <h1 className="relative text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
-            <span className="text-gradient block mb-2">Happy Birthday</span>
-            <span
+            <motion.span
+              className="text-gradient block mb-2"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              Happy Birthday
+            </motion.span>
+            <motion.span
               className="block mt-1 sm:mt-2"
               style={{
                 fontFamily: "var(--font-dancing), cursive",
                 fontSize: "1.4em",
               }}
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.7, type: "spring", stiffness: 100 }}
             >
-              <span className="text-gradient-name drop-shadow-[0_0_30px_rgba(96,165,250,0.3)]">
+              <span className="text-gradient-name drop-shadow-[0_0_40px_rgba(96,165,250,0.3)]">
                 Pearl
               </span>
-            </span>
+            </motion.span>
           </h1>
         </motion.div>
 
@@ -147,7 +187,7 @@ export default function HeroSection() {
           className="text-base sm:text-lg md:text-xl text-blue-200/60 max-w-xl mx-auto leading-relaxed px-4 mb-10 sm:mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 1 }}
         >
           To the most beautiful soul I know — today is all about celebrating
           you and the incredible light you bring into this world.
@@ -157,7 +197,7 @@ export default function HeroSection() {
           className="flex flex-col items-center gap-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
+          transition={{ delay: 1.4, duration: 0.6 }}
         >
           <motion.div
             className="flex items-center gap-3 text-blue-300/30 text-xs sm:text-sm"

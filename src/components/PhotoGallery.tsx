@@ -63,8 +63,8 @@ export default function PhotoGallery() {
         <div className="max-w-6xl mx-auto">
           <div className="columns-2 sm:columns-3 md:columns-4 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
             {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="break-inside-avoid rounded-2xl bg-white/[0.02] overflow-hidden" style={{ height: `${((i % 3) + 1) * 140}px` }}>
-                <div className="w-full h-full animate-pulse bg-gradient-to-r from-white/[0.02] via-white/[0.05] to-white/[0.02] bg-[length:200%_100%]" />
+              <div key={i} className="break-inside-avoid rounded-2xl overflow-hidden" style={{ height: `${((i % 3) + 1) * 140}px` }}>
+                <div className="w-full h-full animate-pulse bg-white/[0.02] rounded-2xl" />
               </div>
             ))}
           </div>
@@ -104,25 +104,31 @@ export default function PhotoGallery() {
           {photos.map((photo, index) => (
             <motion.div
               key={photo.public_id}
-              className="break-inside-avoid cursor-pointer group relative overflow-hidden rounded-2xl"
+              className="break-inside-avoid cursor-pointer group relative"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.04, duration: 0.5 }}
               onClick={() => setSelectedPhoto(photo)}
             >
-              <Image
-                src={photo.secure_url}
-                alt={`Memory ${index + 1}`}
-                width={photo.width}
-                height={photo.height}
-                className="w-full h-auto transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
-                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050d1a]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute inset-0 ring-1 ring-white/0 group-hover:ring-blue-400/20 rounded-2xl transition-all duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <span className="text-blue-200/80 text-sm font-medium">⊕ View</span>
+              <div className="relative overflow-hidden rounded-2xl ring-1 ring-white/[0.04] group-hover:ring-blue-400/25 transition-all duration-500 shadow-lg shadow-black/30 group-hover:shadow-blue-500/10 group-hover:shadow-xl">
+                <Image
+                  src={photo.secure_url}
+                  alt={`Memory ${index + 1}`}
+                  width={photo.width}
+                  height={photo.height}
+                  className="w-full h-auto transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050d1a]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-400">
+                  <span className="text-blue-200/80 text-sm font-medium inline-flex items-center gap-1.5">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    View
+                  </span>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -139,7 +145,7 @@ export default function PhotoGallery() {
             onClick={closeLightbox}
           >
             <motion.button
-              className="absolute top-4 right-4 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-blue-300/60 hover:text-white z-20"
+              className="absolute top-4 right-4 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-blue-300/60 hover:text-white z-20 shadow-lg"
               onClick={closeLightbox}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -152,7 +158,7 @@ export default function PhotoGallery() {
             {photos.length > 1 && (
               <>
                 <motion.button
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-blue-300/60 hover:text-white z-20"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-blue-300/60 hover:text-white z-20 shadow-lg"
                   onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -162,7 +168,7 @@ export default function PhotoGallery() {
                   </svg>
                 </motion.button>
                 <motion.button
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-blue-300/60 hover:text-white z-20"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-strong flex items-center justify-center text-blue-300/60 hover:text-white z-20 shadow-lg"
                   onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -182,15 +188,17 @@ export default function PhotoGallery() {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <Image
-                src={selectedPhoto.secure_url}
-                alt="Enlarged memory"
-                width={selectedPhoto.width}
-                height={selectedPhoto.height}
-                className="max-w-full max-h-[85vh] w-auto h-auto rounded-2xl shadow-2xl shadow-blue-500/10"
-                sizes="90vw"
-                priority
-              />
+              <div className="relative rounded-2xl overflow-hidden ring-1 ring-white/[0.06] shadow-2xl shadow-blue-500/10">
+                <Image
+                  src={selectedPhoto.secure_url}
+                  alt="Enlarged memory"
+                  width={selectedPhoto.width}
+                  height={selectedPhoto.height}
+                  className="max-w-full max-h-[85vh] w-auto h-auto"
+                  sizes="90vw"
+                  priority
+                />
+              </div>
             </motion.div>
           </motion.div>
         )}
