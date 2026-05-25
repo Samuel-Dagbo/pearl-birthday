@@ -1,12 +1,11 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 export default function LoveLetter() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [envelopeOpen, setEnvelopeOpen] = useState(false);
 
   return (
     <section className="relative py-24 sm:py-32 px-4" ref={ref}>
@@ -53,13 +52,7 @@ export default function LoveLetter() {
               damping: 15,
             }}
           >
-            <button
-              onClick={() => setEnvelopeOpen(!envelopeOpen)}
-              className="text-5xl sm:text-6xl cursor-pointer hover:scale-110 transition-transform active:scale-95"
-              aria-label="Toggle envelope"
-            >
-              {envelopeOpen ? "💖" : "💌"}
-            </button>
+            <span className="text-5xl sm:text-6xl inline-block">💌</span>
           </motion.div>
 
           <motion.h3
@@ -77,7 +70,7 @@ export default function LoveLetter() {
           <motion.div
             className="space-y-5 text-base sm:text-lg leading-relaxed text-pink-100/80"
             initial={{ opacity: 0 }}
-            animate={isInView && envelopeOpen ? { opacity: 1 } : {}}
+            animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
             <p>
@@ -100,41 +93,12 @@ export default function LoveLetter() {
             </p>
 
             <p>Thank you for being you. Thank you for being mine.</p>
-
-            <motion.p
-              className="text-pink-300/50 text-xs pt-2 italic"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: 2 }}
-            >
-              {!envelopeOpen && "💡 Tap the envelope to open"}
-            </motion.p>
           </motion.div>
-
-          {!envelopeOpen && (
-            <motion.div
-              className="space-y-5 text-base sm:text-lg leading-relaxed text-pink-100/80"
-              initial={{ opacity: 1 }}
-              animate={isInView ? { opacity: 0.4 } : {}}
-              transition={{ delay: 0.5 }}
-            >
-              <p className="blur-sm select-none">
-                Every single day with you feels like a beautiful melody...
-              </p>
-              <p className="blur-sm select-none">
-                On this special day, I want you to know just how much you
-                mean...
-              </p>
-              <p className="blur-sm select-none">
-                I hope this year brings you everything...
-              </p>
-            </motion.div>
-          )}
 
           <motion.div
             className="mt-10 pt-8 border-t border-pink-500/15 text-center"
             initial={{ opacity: 0 }}
-            animate={isInView && envelopeOpen ? { opacity: 1 } : {}}
+            animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
             <p
