@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const sparkles = Array.from({ length: 30 }, (_, i) => ({
@@ -90,18 +89,6 @@ function FloatingHeart({
 }
 
 export default function HeroSection() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 bg-black" />
-    );
-  }
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
       <div className="absolute inset-0 bg-gradient-to-b from-pink-950 via-purple-950/80 to-black" />

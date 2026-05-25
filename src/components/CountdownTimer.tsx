@@ -25,22 +25,15 @@ function calculateTimeLeft(birthday: Date): TimeLeft | null {
 const BIRTHDAY = new Date("2026-06-08T00:00:00");
 
 function FlipUnit({ value, label }: { value: number; label: string }) {
-  const [flip, setFlip] = useState(false);
-  const prevValue = value;
-
-  useEffect(() => {
-    setFlip(true);
-    const timeout = setTimeout(() => setFlip(false), 300);
-    return () => clearTimeout(timeout);
-  }, [prevValue]);
-
   return (
     <div className="flex flex-col items-center">
       <div className="relative">
         <motion.div
+          key={value}
           className="glass-card rounded-xl sm:rounded-2xl w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 flex items-center justify-center overflow-hidden"
-          animate={flip ? { rotateX: [0, 90, 0] } : {}}
-          transition={{ duration: 0.3 }}
+          initial={{ rotateX: 90, opacity: 0.5 }}
+          animate={{ rotateX: 0, opacity: 1 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           style={{ perspective: 200 }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent" />
@@ -58,12 +51,12 @@ function FlipUnit({ value, label }: { value: number; label: string }) {
 }
 
 export default function CountdownTimer() {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(
+    () => calculateTimeLeft(BIRTHDAY)
+  );
   const [isBirthday, setIsBirthday] = useState(false);
 
   useEffect(() => {
-    setTimeLeft(calculateTimeLeft(BIRTHDAY));
-
     const timer = setInterval(() => {
       const result = calculateTimeLeft(BIRTHDAY);
       if (result === null) {

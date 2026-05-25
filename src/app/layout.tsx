@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Dancing_Script } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Dancing_Script,
+  Caveat,
+} from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,6 +19,11 @@ const geistMono = Geist_Mono({
 
 const dancingScript = Dancing_Script({
   variable: "--font-dancing",
+  subsets: ["latin"],
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
   subsets: ["latin"],
 });
 
@@ -37,7 +47,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} ${caveat.variable} h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
     </html>
